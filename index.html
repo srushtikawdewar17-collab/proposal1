@@ -1,90 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>For You 💖</title>
-  <style>
-    body {
-      margin: 0;
-      background: url('teddy.gif') center center / contain no-repeat;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: sans-serif;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    h1 {
-      font-size: 2rem;
-      background: rgba(0,0,0,0.4);
-      padding: 10px 20px;
-      border-radius: 10px;
-      white-space: normal;
-    }
-
-    .glow {
-      animation: glow 2s infinite alternate, beat 1s infinite;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px pink; }
-      to { text-shadow: 0 0 40px red; }
-    }
-
-    @keyframes beat {
-      50% { transform: scale(1.05); }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Hey ❤️</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1 id="msg">Listen... 💖</h1>
+<div class="container">
+  <h1 id="question">Hey... do you love me? ❤️</h1>
 
-<audio id="song1">
+  <div class="buttons">
+    <button id="yes">Yes ❤️</button>
+    <button id="no">No 😐</button>
+  </div>
+</div>
+
+<div class="hearts"></div>
+
+<audio id="bgMusic" loop>
   <source src="dekhta.mp3" type="audio/mpeg">
 </audio>
 
-<audio id="song2">
-  <source src="inkem.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-const msg = document.getElementById("msg");
-const text = "Shree... nenu ninu premisthinnanu na tikkoda 💖";
-let i = 0;
-const song1 = document.getElementById("song1");
-const song2 = document.getElementById("song2");
-
-// ✅ This function will start songs and text typing after YES click
-function startSequence() {
-  // Play first song
-  song1.currentTime = 0;
-  song1.play().catch(() => {});
-
-  // After 5s switch to second song and start typing
-  setTimeout(() => {
-    song1.pause();
-    song2.currentTime = 0;
-    song2.play().catch(() => {});
-    typeWriter();
-  }, 5000);
-}
-
-function typeWriter() {
-  if (i < text.length) {
-    msg.innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeWriter, 80);
-  } else {
-    msg.classList.add("glow");
-  }
-}
-
-// 🎯 IMPORTANT: Trigger sequence only when user clicks (browser allows autoplay)
-document.body.addEventListener("click", startSequence, { once: true });
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
