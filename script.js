@@ -1,60 +1,52 @@
-const yesBtn = document.getElementById('yes');
-const noBtn = document.getElementById('no');
-const bgMusic = document.getElementById('bgMusic');
-const questionText = document.getElementById('question');
+const noBtn = document.getElementById('noBtn');
+const yesBtn = document.getElementById('yesBtn');
+const questionSection = document.getElementById('question-section');
+const successSection = document.getElementById('success-section');
 
-let yesSize = 18; 
+let yesScale = 1;
 
-// Start music on first interaction
-document.body.addEventListener('click', () => {
-    if (bgMusic.paused) bgMusic.play();
-}, { once: true });
-
-function moveAndGrow() {
-    // 1. Move No Button
+// Function to move the 'No' button randomly and grow 'Yes'
+noBtn.addEventListener('mouseover', () => {
+    // 1. Calculate random coordinates
     const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
     const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-    noBtn.style.position = 'fixed';
+    
     noBtn.style.left = `${x}px`;
     noBtn.style.top = `${y}px`;
 
-    // 2. Grow Yes Button
-    yesSize += 10;
-    yesBtn.style.fontSize = `${yesSize}px`;
-    yesBtn.style.padding = `${yesSize/2}px ${yesSize}px`;
-}
-
-noBtn.addEventListener('mouseover', moveAndGrow);
-noBtn.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    moveAndGrow();
+    // 2. Make the Yes button grow bigger
+    yesScale += 0.2;
+    yesBtn.style.transform = `scale(${yesScale})`;
 });
 
+// For mobile users who can't "hover"
+noBtn.addEventListener('click', () => {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
+    yesScale += 0.2;
+    yesBtn.style.transform = `scale(${yesScale})`;
+});
+
+// Action when 'Yes' is clicked
 yesBtn.addEventListener('click', () => {
-    // Change to your romantic line
-    questionText.innerHTML = "Nenu ninnu premisthunnanu, Thikkoda! ❤️";
-    
-    // Switch Song
-    bgMusic.src = "inkem.mp3";
-    bgMusic.load();
-    bgMusic.play();
-
-    // Fade out buttons
-    document.querySelector('.buttons').style.opacity = '0';
-
-    // Wait for the song to start before moving to success page
-    setTimeout(() => {
-        window.location.href = "yes.html";
-    }, 2500);
+    questionSection.classList.add('hidden');
+    successSection.classList.remove('hidden');
+    spawnHearts();
 });
 
-// Background Hearts Generator
-setInterval(() => {
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.innerHTML = '❤️';
-    heart.style.left = Math.random() * 100 + 'vw';
-    heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 4000);
-}, 300);
+// Extra effect: Floating hearts after Yes is clicked
+function spawnHearts() {
+    setInterval(() => {
+        const heart = document.createElement('div');
+        heart.innerHTML = "❤️";
+        heart.classList.add('floating-heart');
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+    }, 200);
+}
