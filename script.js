@@ -57,5 +57,14 @@ noBtn.addEventListener("mouseover", () => {
 // YES click
 yesBtn.addEventListener("click", () => {
   bgMusic.pause();
-  window.location.href = "yes.html";
+
+  // trigger audio permission on click
+  const tempAudio = new Audio("dekhta.mp3");
+  tempAudio.play().then(() => {
+    tempAudio.pause();
+    window.location.href = "yes.html";
+  }).catch(() => {
+    // fallback if blocked
+    window.location.href = "yes.html";
+  });
 });
