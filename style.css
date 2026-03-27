@@ -1,28 +1,57 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
   height: 100vh;
   overflow: hidden;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
 }
 
+/* 🧸 teddy background (both pages) */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: url("https://media.tenor.com/6XG1YQvYwzQAAAAC/tatty-teddy-couple.gif") no-repeat center/contain;
+  bottom: 20px;
+  opacity: 0.8;
+  animation: float 6s ease-in-out infinite;
+}
+
+body::before {
+  right: 20px;
+}
+
+body::after {
+  left: 20px;
+}
+
+@keyframes float {
+  50% { transform: translateY(-15px); }
+}
+
+/* 🌸 main container */
 .container {
   text-align: center;
   margin-top: 20vh;
 }
 
+/* 💬 text */
 h1 {
-  font-size: 2.2rem;
   color: white;
-  min-height: 60px;
+  font-size: 2.2rem;
+  text-shadow: 0 0 10px pink;
+  text-align: center;
+  margin-top: 40vh;
 }
 
-.buttons button {
+/* 💘 buttons */
+button {
   padding: 12px 25px;
   margin: 10px;
   border: none;
-  border-radius: 30px;
-  font-size: 16px;
+  border-radius: 25px;
   cursor: pointer;
 }
 
@@ -33,17 +62,40 @@ h1 {
 
 #no {
   background: white;
-  color: #333;
-  position: relative;
 }
 
-.hearts span {
+/* 💖 glow + heartbeat */
+.final-glow {
+  animation: glow 1.5s infinite alternate, heartbeat 1s infinite;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px pink; }
+  to { text-shadow: 0 0 40px red; }
+}
+
+@keyframes heartbeat {
+  50% { transform: scale(1.1); }
+}
+
+/* 💥 hearts explosion */
+.burst {
   position: absolute;
-  animation: floatUp 8s linear infinite;
+  font-size: 20px;
+  animation: explode 1.5s forwards;
 }
 
-@keyframes floatUp {
-  0% { transform: translateY(100vh); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-10vh); opacity: 0; }
+@keyframes explode {
+  to {
+    transform: translate(var(--x), var(--y)) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* 💖 YES page center */
+.yes-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
