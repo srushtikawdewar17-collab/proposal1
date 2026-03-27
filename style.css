@@ -1,55 +1,34 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
   height: 100vh;
   overflow: hidden;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  font-family: 'Segoe UI', sans-serif;
+
+  /* 💖 background + GIF */
+  background: linear-gradient(135deg, #ff758c, #ff7eb3),
+              url("https://media.tenor.com/6XG1YQvYwzQAAAAC/tatty-teddy-couple.gif");
+
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: 250px;
 }
 
-/* 🧸 RIGHT TEDDY */
-body::before {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  background: url("https://media.tenor.com/6XG1YQvYwzQAAAAC/tatty-teddy-couple.gif") no-repeat center/contain;
-  bottom: 20px;
-  right: 20px;
-  opacity: 1;
-  z-index: 1;
-}
-
-/* 🧸 LEFT TEDDY */
-body::after {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  background: url("https://media.tenor.com/6XG1YQvYwzQAAAAC/tatty-teddy-couple.gif") no-repeat center/contain;
-  bottom: 20px;
-  left: 20px;
-  opacity: 1;
-  z-index: 1;
-}
-
-/* 💖 center content */
+/* 💖 center text */
 .yes-page {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  position: relative;
-  z-index: 2; /* IMPORTANT */
 }
 
-/* 💬 text */
+/* ✨ text */
 h1 {
   color: white;
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   text-shadow: 0 0 15px pink;
 }
 
-/* 💓 glow + heartbeat */
+/* 💓 glow */
 .final-glow {
   animation: glow 1.5s infinite alternate, heartbeat 1s infinite;
 }
@@ -63,7 +42,7 @@ h1 {
   50% { transform: scale(1.1); }
 }
 
-/* 💥 heart burst */
+/* 💥 hearts */
 .burst {
   position: absolute;
   font-size: 20px;
