@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Hey ❤️</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hey ❤️</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="hearts-container" id="hearts-container"></div>
+    
+    <div class="container">
+        <div class="gif-wrapper">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueG93bm96eXp5eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpN61i/giphy.gif" alt="Cute Bear" id="main-gif">
+        </div>
+        <h1 id="question">Hey... do you love me? ❤️</h1>
 
-<div class="container">
-  <h1 id="question">Hey... do you love me? ❤️</h1>
+        <div class="buttons">
+            <button id="yes">Yes ❤️</button>
+            <button id="no">No 😐</button>
+        </div>
+    </div>
 
-  <div class="buttons">
-    <button id="yes">Yes ❤️</button>
-    <button id="no">No 😐</button>
-  </div>
-</div>
+    <audio id="bgMusic" loop>
+        <source src="dekhta.mp3" type="audio/mpeg">
+    </audio>
 
-<div class="hearts"></div>
-
-<audio id="bgMusic" loop>
-  <source src="dekhta.mp3" type="audio/mpeg">
-</audio>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
