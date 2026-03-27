@@ -13,29 +13,32 @@
       align-items: center;
       height: 100vh;
       font-family: sans-serif;
+      text-align: center;
     }
 
     h1 {
       font-size: 2.3rem;
-      border-right: 2px solid white;
-      white-space: nowrap;
-      overflow: hidden;
+      white-space: normal;
     }
 
     .glow {
-      animation: glow 2s infinite alternate;
+      animation: glow 2s infinite alternate, beat 1s infinite;
     }
 
     @keyframes glow {
       from { text-shadow: 0 0 10px pink; }
-      to { text-shadow: 0 0 30px red; }
+      to { text-shadow: 0 0 40px red; }
+    }
+
+    @keyframes beat {
+      50% { transform: scale(1.05); }
     }
   </style>
 </head>
 
 <body>
 
-<h1 id="msg"></h1>
+<h1 id="msg">Listen... 💖</h1>
 
 <audio id="song1">
   <source src="dekhta.mp3" type="audio/mpeg">
@@ -50,7 +53,6 @@ const msg = document.getElementById("msg");
 const text = "Shree... nenu ninu premisthinnanu na tikkoda 💖";
 
 let i = 0;
-
 function typeWriter() {
   if (i < text.length) {
     msg.innerHTML += text.charAt(i);
@@ -64,22 +66,21 @@ function typeWriter() {
 const song1 = document.getElementById("song1");
 const song2 = document.getElementById("song2");
 
-document.body.addEventListener("click", () => {
-
+// ✅ Play songs after page loads using user interaction from YES click
+window.onload = () => {
   song1.currentTime = 20;
-  song1.play();
+  song1.play().catch(() => {});
 
   setTimeout(() => {
     song1.pause();
 
     song2.currentTime = 40;
-    song2.play();
+    song2.play().catch(() => {});
 
     setTimeout(typeWriter, 500);
 
   }, 5000);
-
-}, { once: true });
+};
 </script>
 
 </body>
