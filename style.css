@@ -6,8 +6,20 @@ body {
   background: linear-gradient(135deg, #ff758c, #ff7eb3);
 }
 
-/* 🧸 teddy background (both pages) */
-body::before,
+/* 🧸 RIGHT TEDDY */
+body::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: url("https://media.tenor.com/6XG1YQvYwzQAAAAC/tatty-teddy-couple.gif") no-repeat center/contain;
+  bottom: 20px;
+  right: 20px;
+  opacity: 1;
+  z-index: 1;
+}
+
+/* 🧸 LEFT TEDDY */
 body::after {
   content: "";
   position: absolute;
@@ -15,56 +27,29 @@ body::after {
   height: 220px;
   background: url("https://media.tenor.com/6XG1YQvYwzQAAAAC/tatty-teddy-couple.gif") no-repeat center/contain;
   bottom: 20px;
-  opacity: 0.8;
-  animation: float 6s ease-in-out infinite;
-}
-
-body::before {
-  right: 20px;
-}
-
-body::after {
   left: 20px;
+  opacity: 1;
+  z-index: 1;
 }
 
-@keyframes float {
-  50% { transform: translateY(-15px); }
-}
-
-/* 🌸 main container */
-.container {
+/* 💖 center content */
+.yes-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin-top: 20vh;
+  position: relative;
+  z-index: 2; /* IMPORTANT */
 }
 
 /* 💬 text */
 h1 {
   color: white;
-  font-size: 2.2rem;
-  text-shadow: 0 0 10px pink;
-  text-align: center;
-  margin-top: 40vh;
+  font-size: 2.3rem;
+  text-shadow: 0 0 15px pink;
 }
 
-/* 💘 buttons */
-button {
-  padding: 12px 25px;
-  margin: 10px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-}
-
-#yes {
-  background: #ff4d6d;
-  color: white;
-}
-
-#no {
-  background: white;
-}
-
-/* 💖 glow + heartbeat */
+/* 💓 glow + heartbeat */
 .final-glow {
   animation: glow 1.5s infinite alternate, heartbeat 1s infinite;
 }
@@ -78,7 +63,7 @@ button {
   50% { transform: scale(1.1); }
 }
 
-/* 💥 hearts explosion */
+/* 💥 heart burst */
 .burst {
   position: absolute;
   font-size: 20px;
@@ -90,12 +75,4 @@ button {
     transform: translate(var(--x), var(--y)) scale(1.5);
     opacity: 0;
   }
-}
-
-/* 💖 YES page center */
-.yes-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
