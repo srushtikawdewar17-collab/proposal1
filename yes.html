@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For You 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      border-right: 2px solid white;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .glow {
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px pink; }
+      to { text-shadow: 0 0 30px red; }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1 id="msg"></h1>
+
+<audio id="song1">
+  <source src="dekhta.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="song2">
+  <source src="inkem.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const msg = document.getElementById("msg");
+const text = "Shree... nenu ninu premisthinnanu na tikkoda 💖";
+
+let i = 0;
+
+function typeWriter() {
+  if (i < text.length) {
+    msg.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 80);
+  } else {
+    msg.classList.add("glow");
+  }
+}
+
+const song1 = document.getElementById("song1");
+const song2 = document.getElementById("song2");
+
+document.body.addEventListener("click", () => {
+
+  song1.currentTime = 20;
+  song1.play();
+
+  setTimeout(() => {
+    song1.pause();
+
+    song2.currentTime = 40;
+    song2.play();
+
+    setTimeout(typeWriter, 500);
+
+  }, 5000);
+
+}, { once: true });
+</script>
+
+</body>
+</html>

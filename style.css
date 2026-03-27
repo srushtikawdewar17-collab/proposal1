@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  margin-top: 20vh;
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: white;
+  min-height: 60px;
+}
+
+.buttons button {
+  padding: 12px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#yes {
+  background: #ff4d6d;
+  color: white;
+}
+
+#no {
+  background: white;
+  color: #333;
+  position: relative;
+}
+
+.hearts span {
+  position: absolute;
+  animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
